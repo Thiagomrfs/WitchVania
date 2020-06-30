@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Witchvania"
+run/main_scene="res://fases/Main_menu.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
+window/size/always_on_top=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 0.0156863, 0.0156863, 0.0470588, 1 )
