@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
-[ext_resource path="res://personagens/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://details.png" type="Texture" id=3]
-[ext_resource path="res://personagens/enemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fases/fase4.gd" type="Script" id=5]
+[ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/fase4.gd" type="Script" id=5]
 [ext_resource path="res://boss.wav" type="AudioStream" id=6]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=7]
-[ext_resource path="res://fases/Stage_change.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Stage_change.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.8467, 41.4755 )
@@ -105,4 +105,4 @@ volume_db = -13.177
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1628.23, 832.03 )
-target_stage = "res://fases/you_won.tscn"
+target_stage = "res://scenes/you_won.tscn"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
+[ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://power_ups/attack_powerUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://power_ups/jump_power_up.tscn" type="PackedScene" id=4]
+[ext_resource path="res://power_ups/speed_powerUp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0 )
+
+[node name="enemy" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 391.632, 99.4293 )
+boss = true
+hp = 6
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 53.6259, 95.7252 )
+
+[node name="attack_powerUp" parent="." instance=ExtResource( 3 )]
+position = Vector2( 136.664, 105.484 )
+
+[node name="jump_powerUp" parent="." instance=ExtResource( 4 )]
+position = Vector2( 201.176, 99.9891 )
+
+[node name="speed_powerUp" parent="." instance=ExtResource( 5 )]
+position = Vector2( 168.245, 100.588 )

@@ -8,6 +8,5 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _on_TextureButton_pressed():
-	get_tree().change_scene("res://fases/fase1.tscn")
+	get_tree().change_scene("res://scenes/fase1.tscn")

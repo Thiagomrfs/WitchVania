@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
-const MANABALL = preload("res://mecanicas/manaball.tscn")
+const MANABALL = preload("res://mechanics/manaball.tscn")
 
 var motion = Vector2()
 var is_dead = false
@@ -11,12 +11,12 @@ onready var attack = get_node("attack")
 onready var attack_delay = get_node("manabal_delay")
 var is_attacking = false
 var jump_power = -250
-var boss_hp = 5
 
 export(int) var direction = 1
 export(int) var speed = 60
 export(String) var type = "default"
 export(bool) var boss = false
+export(int) var hp = 1
 
 func _ready():
 	if boss:
@@ -32,15 +32,9 @@ func _ready():
 			$AnimatedSprite.flip_h = false
 
 func death():
-	if boss:
-		boss_hp -= 1
-		if boss_hp <= 0:
-			is_dead = true
+	if hp <= 0:
+		if boss:
 			is_boss_dead = true
-			motion = Vector2(0, 0)
-			$AnimatedSprite.play("death")
-			$CollisionShape2D.set_deferred("disabled", true)
-	else:
 		is_dead = true
 		motion = Vector2(0, 0)
 		$AnimatedSprite.play("death")
@@ -73,6 +67,7 @@ func _process(delta):
 					$RayCast2D.position.x *= -1
 				elif $RayCast2D.is_colliding() == false:
 					direction *= -1
+					$RayCast2D.position.x *= -1
 
 				motion.x = speed * direction
 				motion = move_and_slide(motion, FLOOR)

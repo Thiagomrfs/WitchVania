@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
-const MANABALL = preload("res://mecanicas/manaball.tscn")
+const MANABALL = preload("res://mechanics/manaball.tscn")
 
 var motion = Vector2()
 var velocity = 100
@@ -30,6 +30,10 @@ func shoot_manaball():
 			manaball.set_manaball_direction(1)
 		else:
 			manaball.set_manaball_direction(-1)
+		if is_attack_boosted:
+			manaball.damage = 2
+			manaball.speed += 40
+			manaball.modulate = Color(0.83, 0.09, 0.38)
 		get_parent().add_child(manaball)
 		manaball.position = $Position2D.global_position
 
@@ -85,5 +89,5 @@ func _on_Timer_timeout():
 	timer.stop()
 
 func _on_Timer2_timeout():
-	get_tree().change_scene("res://fases/Main_menu.tscn")
+	get_tree().change_scene("res://scenes/Main_menu.tscn")
 	death_timer.stop()

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Witchvania"
-run/main_scene="res://fases/Main_menu.tscn"
+run/main_scene="res://scenes/Main_menu.tscn"
 config/icon="res://icon.png"
 
 [display]

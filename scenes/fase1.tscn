@@ -1,18 +1,19 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
-[ext_resource path="res://personagens/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://power_ups/speed_powerUp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://theme.wav" type="AudioStream" id=4]
-[ext_resource path="res://fases/fase1.gd" type="Script" id=5]
+[ext_resource path="res://scenes/fase1.gd" type="Script" id=5]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=6]
-[ext_resource path="res://personagens/enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fases/Stage_change.tscn" type="PackedScene" id=8]
+[ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Stage_change.tscn" type="PackedScene" id=8]
 
 [node name="Node" type="Node"]
 script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 65.5118, 306.532 )
 
 [node name="ground" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -57,7 +58,7 @@ speed = 100
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( -88, 192 )
-target_stage = "res://fases/fase2.tscn"
+target_stage = "res://scenes/fase2.tscn"
 
 [node name="speed_powerUp" parent="." instance=ExtResource( 3 )]
 position = Vector2( 202.229, 200.114 )

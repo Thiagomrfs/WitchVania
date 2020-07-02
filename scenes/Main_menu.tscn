@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://fases/Main_menu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Main_menu.gd" type="Script" id=1]
 [ext_resource path="res://iniciar.png" type="Texture" id=2]
 [ext_resource path="res://Main_menu.png" type="Texture" id=3]
 [ext_resource path="res://theme.wav" type="AudioStream" id=4]

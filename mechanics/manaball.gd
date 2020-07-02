@@ -1,8 +1,9 @@
 extends Area2D
 
-const SPEED = 160
+var speed = 160
 var motion = Vector2()
 var direction = 1
+var damage = 1
 
 func _ready():
 	pass 
@@ -16,7 +17,7 @@ func set_manaball_direction(dir):
 
 
 func _process(delta):
-	motion.x = SPEED * delta * direction
+	motion.x = speed * delta * direction
 	$AnimatedSprite.play("idle")
 	translate(motion)
 
@@ -27,6 +28,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_manaball_body_entered(body):
 	if "enemy" in body.name:
+		body.hp -= damage
 		body.death()
 	elif "player" in body.name:
 		body.death()
