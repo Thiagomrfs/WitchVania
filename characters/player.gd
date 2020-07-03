@@ -80,6 +80,8 @@ func _process(delta):
 			for slide in range(get_slide_count()):
 				if "enemy" in get_slide_collision(slide).collider.name:
 					death()
+				elif "ghost" in get_slide_collision(slide).collider.name:
+					death()
 
 func _on_AnimatedSprite_animation_finished():
 	is_attacking = false
