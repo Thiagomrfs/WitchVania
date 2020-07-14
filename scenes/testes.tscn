@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://power_ups/speed_powerUp.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=7]
-[ext_resource path="res://characters/enemies/ghost.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 
@@ -58,6 +57,3 @@ tile_data = PoolIntArray( 327679, 0, 0, 262144, 2, 0, 393215, -2147483647, 0, 32
 position = Vector2( 391.632, 99.4293 )
 boss = true
 hp = 6
-
-[node name="ghost" parent="enemies" instance=ExtResource( 8 )]
-position = Vector2( 168, 56 )

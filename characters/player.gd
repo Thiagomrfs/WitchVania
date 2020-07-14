@@ -11,14 +11,16 @@ var is_attacking = false
 var is_dead = false
 var is_attack_boosted = false
 export(bool) var dark_phase = false 
+var is_emiting_footsteps = false
 
-onready var timer = get_node("Timer")
-onready var death_timer = get_node("Timer2")
+onready var timer = get_node("timers/Timer")
+onready var death_timer = get_node("timers/Timer2")
 
 
 func death():
 	is_dead = true
 	motion = Vector2(0,0)
+	$sound_fx/death_fx.play()
 	$AnimatedSprite.play("die")
 	$CollisionShape2D.set_deferred("disabled", true)
 	death_timer.set_wait_time(3)
@@ -35,6 +37,7 @@ func shoot_manaball():
 			manaball.damage = 2
 			manaball.speed += 40
 			manaball.modulate = Color(0.83, 0.09, 0.38)
+		$sound_fx/manaball_fx.playing = true
 		get_parent().add_child(manaball)
 		manaball.position = $Position2D.global_position
 
@@ -45,7 +48,7 @@ func _ready():
 		$light_phases_aura.visible = true
 		$light_phases_aura.energy = 15
 
-func _process(delta):
+func _process(_delta):
 	if is_dead == false:
 		if Input.is_action_pressed("ui_right"):
 			if is_attacking == false:
@@ -68,6 +71,7 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("ui_up"):
 			if is_on_floor():
+				$sound_fx/jump_fx.playing = true
 				motion.y = jump_power
 		
 		if Input.is_key_pressed(32) and is_attacking == false:

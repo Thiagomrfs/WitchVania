@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://light.png" type="Texture" id=1]
 [ext_resource path="res://props/props_assets/Torch.png" type="Texture" id=2]
+[ext_resource path="res://props/torch.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -43,10 +44,13 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 80, 56 )
+
 [node name="torch" type="AnimatedSprite"]
 frames = SubResource( 9 )
-frame = 7
-playing = true
+frame = 2
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -58,3 +62,11 @@ texture = ExtResource( 1 )
 color = Color( 1, 0.815686, 0.227451, 1 )
 energy = 2.59
 shadow_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 10 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

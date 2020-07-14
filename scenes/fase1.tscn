@@ -15,10 +15,11 @@ script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 65.5118, 306.532 )
+z_index = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -13.177
+volume_db = -25.322
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( -88, 192 )
@@ -67,7 +68,7 @@ z_index = -4
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 851964, 3, 0, 851967, 7, 0, 786437, 7, 0, 917519, 3, 0, 983043, 5, 0, 983057, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 1, 0, 1114130, 1, 0, 1245192, 8, 0, 1245199, 1, 0, 1310726, 0, 0, 1441807, 7, 0, 1441809, 4, 0 )
+tile_data = PoolIntArray( 851967, 7, 0, 786437, 7, 0, 917519, 3, 0, 983043, 5, 0, 983057, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 1, 0, 1114130, 1, 0, 1245192, 8, 0, 1245199, 1, 0, 1310726, 0, 0, 1441807, 7, 0, 1441809, 4, 0 )
 
 [node name="props" type="Node2D" parent="."]
 
@@ -75,42 +76,42 @@ tile_data = PoolIntArray( 851964, 3, 0, 851967, 7, 0, 786437, 7, 0, 917519, 3, 0
 
 [node name="torch" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 80.843, 283.184 )
-frame = 5
+frame = 2
 
 [node name="torch2" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 155.493, 283.883 )
-frame = 3
+frame = 0
 
 [node name="torch3" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 237.871, 296.321 )
-frame = 2
 
 [node name="torch4" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 316.201, 288.829 )
-frame = 1
+frame = 6
 
 [node name="torch5" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 377.502, 238.085 )
-frame = 1
+frame = 6
 
 [node name="torch6" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 337.996, 190.407 )
-frame = 0
+frame = 5
 
 [node name="torch7" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 265.797, 190.066 )
-frame = 0
+frame = 5
 
 [node name="torch8" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 167.375, 172.697 )
+frame = 4
 
 [node name="torch9" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 60.4388, 173.038 )
-frame = 6
+frame = 3
 
 [node name="torch10" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( -60.8011, 172.697 )
-frame = 6
+frame = 3
 
 [node name="power_ups" type="Node2D" parent="."]
 
