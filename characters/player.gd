@@ -10,6 +10,7 @@ var jump_power = -250
 var is_attacking = false
 var is_dead = false
 var is_attack_boosted = false
+export(bool) var dark_phase = false 
 
 onready var timer = get_node("Timer")
 onready var death_timer = get_node("Timer2")
@@ -38,7 +39,11 @@ func shoot_manaball():
 		manaball.position = $Position2D.global_position
 
 func _ready():
-	pass
+	if dark_phase:
+		get_parent().get_node("map").modulate = Color(0.09, 0.09, 0.09)
+		$".".modulate = Color(0.64, 0.64, 0.64)
+		$light_phases_aura.visible = true
+		$light_phases_aura.energy = 15
 
 func _process(delta):
 	if is_dead == false:

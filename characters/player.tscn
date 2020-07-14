@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://characters/player.gd" type="Script" id=1]
 [ext_resource path="res://Witch Sprite Sheet.png" type="Texture" id=2]
+[ext_resource path="res://light.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -131,7 +132,7 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
+"loop": false,
 "name": "manaball",
 "speed": 10.0
 }, {
@@ -152,11 +153,9 @@ extents = Vector2( 5, 7.2146 )
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 0.114189, -4.75683 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = 2
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 31 )
 animation = "manaball"
@@ -177,6 +176,17 @@ position = Vector2( 11, 5 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]
+
+[node name="light_phases_aura" type="Light2D" parent="."]
+visible = false
+position = Vector2( -2.35825, 1.09907 )
+scale = Vector2( 0.124118, 0.124118 )
+texture = ExtResource( 3 )
+color = Color( 0.509804, 0.419608, 0.635294, 1 )
+energy = 5.45
+range_item_cull_mask = 16
+shadow_enabled = true
+shadow_item_cull_mask = 17
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
