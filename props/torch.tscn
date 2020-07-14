@@ -45,11 +45,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 80, 56 )
+extents = Vector2( 120, 64 )
 
 [node name="torch" type="AnimatedSprite"]
+z_index = -1
 frames = SubResource( 9 )
-frame = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

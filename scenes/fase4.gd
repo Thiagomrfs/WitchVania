@@ -12,7 +12,7 @@ func _ready():
 
 
 func _process(delta):
-	if $enemy.is_boss_dead:
+	if $enemies/boss.is_boss_dead:
 		$block/CollisionShape2D.set_deferred("disabled", true)
 		$block/Sprite.set_deferred("visible", false)
 		$block/Sprite2.set_deferred("visible", false)

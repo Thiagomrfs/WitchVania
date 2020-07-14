@@ -30,6 +30,9 @@ func _on_manaball_body_entered(body):
 	if "enemy" in body.name:
 		body.hp -= damage
 		body.death()
+	if "boss" in body.name:
+		body.hp -= damage
+		body.death()
 	elif "player" in body.name:
 		body.death()
 	elif "ghost" in body.name:
