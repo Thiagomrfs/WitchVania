@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/change_stage.gd" type="Script" id=1]
 [ext_resource path="res://door.png" type="Texture" id=2]
-
+[ext_resource path="res://UI/scene_transition/Scene_tansition.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.3152, 14.6562 )
@@ -17,6 +17,17 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0.184029, 1.28818 )
 shape = SubResource( 1 )
+
+[node name="Scene_tansition" parent="." instance=ExtResource( 3 )]
+
+[node name="timers" type="Node" parent="."]
+
+[node name="fade_in_timer" type="Timer" parent="timers"]
+
+[node name="fade_out_timer" type="Timer" parent="timers"]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="timers/fade_in_timer" to="." method="_on_fade_in_timer_timeout"]
+[connection signal="timeout" from="timers/fade_out_timer" to="." method="_on_fade_out_timer_timeout"]

@@ -6,15 +6,17 @@ const MANABALL = preload("res://mechanics/manaball.tscn")
 
 var motion = Vector2()
 var velocity = 100
-var jump_power = -250
+var jump_power = 250
 var is_attacking = false
+var can_attack = true
 var is_dead = false
 var is_attack_boosted = false
+
 export(bool) var dark_phase = false 
-var is_emiting_footsteps = false
 
 onready var timer = get_node("timers/Timer")
 onready var death_timer = get_node("timers/Timer2")
+onready var attack_delay = get_node("timers/attack_wait")
 
 
 func death():
@@ -23,7 +25,6 @@ func death():
 	$sound_fx/death_fx.play()
 	$AnimatedSprite.play("die")
 	$CollisionShape2D.set_deferred("disabled", true)
-	death_timer.set_wait_time(3)
 	death_timer.start()
 
 func shoot_manaball():
@@ -39,16 +40,24 @@ func shoot_manaball():
 			manaball.modulate = Color(0.83, 0.09, 0.38)
 		$sound_fx/manaball_fx.playing = true
 		get_parent().add_child(manaball)
+		manaball.check_dark_phase()
 		manaball.position = $Position2D.global_position
+		is_attacking = false
 
 func _ready():
 	if dark_phase:
 		get_parent().get_node("map").modulate = Color(0.09, 0.09, 0.09)
+		get_parent().get_node("enemies").modulate = Color(0.09, 0.09, 0.09)
+		get_parent().get_node("props").modulate = Color(0.09, 0.09, 0.09)
+		get_parent().get_node("power_ups").modulate = Color(0.09, 0.09, 0.09)
 		$".".modulate = Color(0.64, 0.64, 0.64)
 		$light_phases_aura.visible = true
-		$light_phases_aura.energy = 15
+		$light_phases_aura.energy = 5
+	timer.set_wait_time(0.6)
+	attack_delay.set_wait_time(2)
+	death_timer.set_wait_time(3)
 
-func _process(_delta):
+func _physics_process(delta):
 	if is_dead == false:
 		if Input.is_action_pressed("ui_right"):
 			if is_attacking == false:
@@ -71,20 +80,22 @@ func _process(_delta):
 		
 		if Input.is_action_just_pressed("ui_up"):
 			if is_on_floor():
+				motion.y = -jump_power
 				$sound_fx/jump_fx.playing = true
-				motion.y = jump_power
 		
-		if Input.is_key_pressed(32) and is_attacking == false:
+		if Input.is_key_pressed(32) and can_attack:
 			if is_on_floor():
 				motion.x = 0
+			can_attack = false
 			is_attacking = true
 			$AnimatedSprite.play("manaball")
-			timer.set_wait_time(0.6)
+			$GUI/player_GUI.modulate = Color(1, 1, 1, 0.08)
+			attack_delay.start()
 			timer.start()
-	
+
 		motion.y += GRAVITY
 		motion = move_and_slide(motion, FLOOR)
-	
+
 		if get_slide_count() > 0:
 			for slide in range(get_slide_count()):
 				if "enemy" in get_slide_collision(slide).collider.name:
@@ -92,8 +103,9 @@ func _process(_delta):
 				elif "ghost" in get_slide_collision(slide).collider.name:
 					death()
 
-func _on_AnimatedSprite_animation_finished():
-	is_attacking = false
+func _process(delta):
+	if attack_delay.time_left < 2:
+		$GUI/player_GUI.modulate = Color(1, 1, 1, 1 - attack_delay.time_left)
 
 func _on_Timer_timeout():
 	shoot_manaball()
@@ -102,3 +114,10 @@ func _on_Timer_timeout():
 func _on_Timer2_timeout():
 	get_tree().change_scene("res://scenes/Main_menu.tscn")
 	death_timer.stop()
+
+func _on_AnimatedSprite_animation_finished():
+	is_attacking = false
+
+func _on_attack_wait_timeout():
+	can_attack = true
+	attack_delay.stop()

@@ -40,7 +40,7 @@ height = 4.46281
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-light_mask = 2
+light_mask = 3
 frames = SubResource( 6 )
 animation = "idle"
 
@@ -58,7 +58,6 @@ position = Vector2( -1.70116, 0.208313 )
 scale = Vector2( 0.0314869, 0.0151058 )
 texture = ExtResource( 3 )
 color = Color( 0.870618, 0.722961, 0.898438, 1 )
-energy = 1.16
 shadow_enabled = true
 [connection signal="body_entered" from="." to="." method="_on_manaball_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

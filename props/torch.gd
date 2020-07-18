@@ -1,10 +1,7 @@
 extends AnimatedSprite
 
-func _on_Area2D_body_entered(body):
-	if "player" in body.name:
-		$".".playing = true
+func _on_VisibilityNotifier2D_screen_entered():
+	$".".playing = true
 
-
-func _on_Area2D_body_exited(body):
-	if "player" in body.name:
-		$".".playing = false
+func _on_VisibilityNotifier2D_screen_exited():
+	$".".playing = false

@@ -53,8 +53,6 @@ position = Vector2( 216, 472 )
 [node name="enemy7" parent="enemies" instance=ExtResource( 7 )]
 position = Vector2( 299.074, 437.524 )
 
-[node name="power_ups" type="Node2D" parent="."]
-
 [node name="tilemaps" type="Node2D" parent="."]
 
 [node name="ground" type="TileMap" parent="tilemaps"]
@@ -109,7 +107,6 @@ position = Vector2( 151.151, 268.329 )
 
 [node name="torch13" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 211.771, 140.959 )
-frame = 0
 
 [node name="torch14" parent="props/torchs" instance=ExtResource( 9 )]
 position = Vector2( 103.472, 103.497 )

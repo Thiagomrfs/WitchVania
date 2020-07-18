@@ -6,7 +6,12 @@ var direction = 1
 var damage = 1
 
 func _ready():
-	pass 
+	pass
+
+func check_dark_phase():
+	var player = get_parent().get_node("player")
+	if player.dark_phase:
+		$".".modulate = Color(0.09, 0.09, 0.09)
 
 func set_manaball_direction(dir):
 	direction = dir
