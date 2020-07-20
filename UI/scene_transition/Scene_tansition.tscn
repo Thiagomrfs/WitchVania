@@ -33,12 +33,14 @@ tracks/0/keys = {
 }
 
 [node name="Scene_tansition" type="CanvasLayer"]
+layer = 100
 script = ExtResource( 1 )
 
 [node name="Control" type="Control" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,6 +48,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.313726, 0.0705882, 0.25098, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

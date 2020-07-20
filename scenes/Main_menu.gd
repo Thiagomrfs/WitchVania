@@ -1,12 +1,15 @@
 extends Node
 
-
 func _ready():
-	get_node("AudioStreamPlayer2D").playing = true
-
-
-func _process(delta):
-	pass
+	if Globals.boss_theme.playing:
+			Globals.boss_theme.stop()
+	if not Globals.theme.playing:
+		Globals.theme.play()
 
 func _on_TextureButton_pressed():
-	get_tree().change_scene("res://scenes/fase1.tscn")
+	SceneTansition.change_scene_with_transition("res://scenes/fase1.tscn")
+	
+
+
+func _on_quit_pressed():
+	get_tree().quit()

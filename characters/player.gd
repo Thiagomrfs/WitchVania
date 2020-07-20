@@ -13,6 +13,7 @@ var is_dead = false
 var is_attack_boosted = false
 
 export(bool) var dark_phase = false 
+export(bool) var boss_fight = false
 
 onready var timer = get_node("timers/Timer")
 onready var death_timer = get_node("timers/Timer2")
@@ -56,6 +57,16 @@ func _ready():
 	timer.set_wait_time(0.6)
 	attack_delay.set_wait_time(2)
 	death_timer.set_wait_time(3)
+	if boss_fight:
+		if Globals.theme.playing: 
+			Globals.theme.stop()
+		if not Globals.boss_theme.playing:
+			Globals.boss_theme.play()
+	else:
+		if Globals.boss_theme.playing:
+			Globals.boss_theme.stop()
+		if not Globals.theme.playing:
+			Globals.theme.play()
 
 func _physics_process(delta):
 	if is_dead == false:

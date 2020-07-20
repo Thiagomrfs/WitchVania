@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://power_ups/speed_powerUp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://theme.wav" type="AudioStream" id=4]
-[ext_resource path="res://scenes/fase1.gd" type="Script" id=5]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=6]
 [ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Stage_change.tscn" type="PackedScene" id=8]
@@ -13,10 +12,9 @@
 [ext_resource path="res://props/crazy_eyes.tscn" type="PackedScene" id=11]
 
 [node name="Node" type="Node"]
-script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -58, 192.646 )
+position = Vector2( 72, 304 )
 z_index = 3
 dark_phase = true
 

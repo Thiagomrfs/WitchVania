@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/change_stage.gd" type="Script" id=1]
 [ext_resource path="res://door.png" type="Texture" id=2]
-[ext_resource path="res://UI/scene_transition/Scene_tansition.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.3152, 14.6562 )
@@ -20,8 +19,6 @@ texture = ExtResource( 2 )
 visible = false
 position = Vector2( 0.184029, 1.28818 )
 shape = SubResource( 1 )
-
-[node name="Scene_tansition" parent="." instance=ExtResource( 3 )]
 
 [node name="timers" type="Node" parent="."]
 

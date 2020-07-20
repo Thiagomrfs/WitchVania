@@ -8,7 +8,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("AudioStreamPlayer").playing = true
+	pass
+	#get_node("AudioStreamPlayer").playing = true
 
 
 func _process(delta):

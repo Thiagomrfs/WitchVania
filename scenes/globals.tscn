@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://boss.wav" type="AudioStream" id=1]
+[ext_resource path="res://theme.wav" type="AudioStream" id=2]
+[ext_resource path="res://scenes/globals.gd" type="Script" id=3]
+
+[node name="globals" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -20.0
+
+[node name="bossfight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -20.0

@@ -18,6 +18,7 @@ script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 227.735, 429.931 )
+boss_fight = true
 
 [node name="block" type="StaticBody2D" parent="."]
 

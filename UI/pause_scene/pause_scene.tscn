@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI/main_menu/dinovo.png" type="Texture" id=1]
-[ext_resource path="res://UI/main_menu/iniciar.png" type="Texture" id=2]
+[ext_resource path="res://UI/pause_scene/quit.png" type="Texture" id=1]
+[ext_resource path="res://UI/pause_scene/resume.png" type="Texture" id=2]
 [ext_resource path="res://UI/pause_scene/pause_scene.gd" type="Script" id=3]
 
 [node name="Pause_scene" type="Control"]
@@ -34,19 +34,21 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = -151.0
-margin_top = -101.0
-margin_right = 151.0
-margin_bottom = 101.0
+margin_left = -150.0
+margin_top = -99.0
+margin_right = 149.0
+margin_bottom = 99.0
 custom_constants/separation = 36
 
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
-margin_right = 302.0
-margin_bottom = 83.0
+[node name="Resume" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+margin_right = 299.0
+margin_bottom = 81.0
 texture_normal = ExtResource( 2 )
 
-[node name="TextureButton2" type="TextureButton" parent="CenterContainer/VBoxContainer"]
-margin_top = 119.0
-margin_right = 302.0
-margin_bottom = 202.0
+[node name="Quit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+margin_top = 117.0
+margin_right = 299.0
+margin_bottom = 198.0
 texture_normal = ExtResource( 1 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
