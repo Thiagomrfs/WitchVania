@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
-const MANABALL = preload("res://mechanics/manaball.tscn")
+const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
 
 var motion = Vector2()
 var velocity = 100

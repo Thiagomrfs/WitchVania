@@ -194,6 +194,8 @@ extents = Vector2( 109.43, 33.6169 )
 extents = Vector2( 5.20954, 5.7516 )
 
 [node name="cat" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
