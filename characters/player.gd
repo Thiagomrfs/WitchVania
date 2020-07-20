@@ -113,6 +113,8 @@ func _physics_process(delta):
 					death()
 				elif "ghost" in get_slide_collision(slide).collider.name:
 					death()
+				elif "cat" in get_slide_collision(slide).collider.name:
+					death()
 
 func _process(delta):
 	if attack_delay.time_left < 2:

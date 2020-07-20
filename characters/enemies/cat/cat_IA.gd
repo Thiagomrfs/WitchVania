@@ -4,10 +4,13 @@ const GRAVITY = 100
 const JUMP_POWER = -150
 const FLOOR = Vector2(0, -1)
 
-var velocity = 100
+var velocity = 5
 var targeting = false
 var attacking = false
-var jump_width = Vector2()
+var dead = false
+var jump_motion = Vector2()
+var jump_height = 5
+var jump_width
 var target_position
 var direction
 
@@ -16,62 +19,105 @@ onready var target = get_parent().get_parent().get_node("player")
 onready var attack_delay = get_node("attack_delay")
 
 
+func death():
+	dead = true
+	$AnimatedSprite.play("death")
+	yield($AnimatedSprite, "animation_finished")
+	$CollisionShape2D.set_deferred("disabled", true)
+	$range/CollisionShape2D.set_deferred("disabled", true)
+	$claws/claws_collision.set_deferred("disabled", true)
+	queue_free()
+
 func _ready():
-	attack_delay.set_wait_time(4)
+	attack_delay.set_wait_time(2)
 	$AnimatedSprite.play("default")
 
 func _process(delta):
-	if targeting:
-		if target.position.x > position.x:
-			$AnimatedSprite.flip_h = true
-		else:
-			$AnimatedSprite.flip_h = false
-	if attacking:
-		jump(delta)
-		if direction == 1:
-			if position.x < target_position.x:
-				jump_width.x += target_position.x * direction
-				move_and_slide(jump_width, FLOOR)
-		else:
-			if position.x > target_position.x:
-				jump_width.x += target_position.x * direction
-				move_and_slide(jump_width, FLOOR)
-	move_and_slide(Vector2(0, GRAVITY))
+	if not dead:
+		for slide in range(get_slide_count()):
+			if "player" in get_slide_collision(slide).collider.name:
+				get_slide_collision(slide).collider.death()
 
-func jump(delta):
-	if direction == 1:
-		if position.x < target_position.x:
-			if position.y < start_position.y - JUMP_POWER:
-				move_and_slide(Vector2(0, JUMP_POWER))
+		if targeting:
+			if target.position.x > position.x:
+				$AnimatedSprite.flip_h = true
 			else:
-				attacking = false
-	else:
-		if position.x > target_position.x:
-			if position.y < start_position.y - JUMP_POWER:
-				move_and_slide(Vector2(0, JUMP_POWER))
+				$AnimatedSprite.flip_h = false
+		if attacking:
+			if direction == 1:
+				if position.x < start_position.x + (jump_width/2):
+					jump_motion.y = JUMP_POWER
+					move_and_slide(Vector2(0, jump_motion.y), FLOOR)
+				else:
+					jump_motion.y = 0
+	
+				if position.x < target_position.x-1:
+					jump_motion.x = (target_position.x - position.x) * 3
+				else:
+					$AnimatedSprite.play("default")
+					targeting = true
+					attacking = false
+					start_position = position
+					for body in $range.get_overlapping_bodies():
+						if "player" in body.name:
+							if not attacking:
+								targeting = true
+								$AnimatedSprite.play("prepare")
+								attack_delay.start()
+				move_and_slide(jump_motion, FLOOR)
 			else:
-				attacking = false
+				if position.x > start_position.x + (jump_width/2):
+					jump_motion.y = JUMP_POWER
+					move_and_slide(Vector2(0, jump_motion.y), FLOOR)
+				else:
+					jump_motion.y = 0
 
+				if position.x > target_position.x+1:
+					jump_motion.x = (position.x - target_position.x) * -3
+					move_and_slide(jump_motion, FLOOR)
+				else:
+					$AnimatedSprite.play("default")
+					targeting = true
+					attacking = false
+					start_position = position
+					for body in $range.get_overlapping_bodies():
+						if "player" in body.name:
+							if not attacking:
+								targeting = true
+								$AnimatedSprite.play("prepare")
+								attack_delay.start()
+
+		move_and_slide(Vector2(0, GRAVITY), FLOOR)
 
 func _on_range_body_entered(body):
 	if "player" in body.name:
-		targeting = true
-		$AnimatedSprite.play("prepare")
-		attack_delay.start()
+		if not attacking:
+			targeting = true
+			$AnimatedSprite.play("prepare")
+			attack_delay.start()
 
 func _on_range_body_exited(body):
-	targeting = false
-	$AnimatedSprite.play("prepare")
-	$AnimatedSprite.play("default")
+	if targeting:
+		targeting = false
+		$AnimatedSprite.play("default")
 
 func _on_attack_delay_timeout():
-	if targeting:
-		target_position = target.position
-		if target.position.x > position.x:
-			direction = 1
-		else:
-			direction = -1
-		targeting = false
-		attacking = true
-		$AnimatedSprite.play("attack")
-		attack_delay.stop()
+	if not dead:
+		if targeting and not attacking:
+			$AnimatedSprite.play("attack")
+			target_position = target.position
+			if target.position.x > position.x:
+				jump_width = target_position.x - position.x
+				$claws/claws_collision.position.x = 9.119
+				direction = 1
+			else:
+				jump_width = target_position.x - position.x
+				$claws/claws_collision.position.x = -9.119
+				direction = -1
+			attack_delay.stop()
+			attacking = true
+			targeting = false
+
+func _on_claws_body_entered(body):
+	if "player" in body.name:
+		body.death()

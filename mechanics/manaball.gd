@@ -42,4 +42,6 @@ func _on_manaball_body_entered(body):
 		body.death()
 	elif "ghost" in body.name:
 		body.death()
+	elif "cat" in body.name:
+		body.death()
 	queue_free()
