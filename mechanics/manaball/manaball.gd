@@ -44,4 +44,6 @@ func _on_manaball_body_entered(body):
 		body.death()
 	elif "cat" in body.name:
 		body.death()
+	elif "chest" in body.name:
+		body.break_chest()
 	queue_free()

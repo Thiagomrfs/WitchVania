@@ -185,13 +185,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=41]
-extents = Vector2( 9.31551, 6.88218 )
-
-[sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 109.43, 33.6169 )
 
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 4.43324, 4.19481 )
+
 [sub_resource type="RectangleShape2D" id=43]
-extents = Vector2( 5.20954, 5.7516 )
+extents = Vector2( 5.03101, 8.18089 )
 
 [node name="cat" type="KinematicBody2D"]
 collision_layer = 2
@@ -199,19 +199,15 @@ collision_mask = 2
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -9.53674e-07, -4.76837e-07 )
 frames = SubResource( 40 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -1.84027, 3.68053 )
-shape = SubResource( 41 )
 
 [node name="range" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
 position = Vector2( -1.94121, -22.3239 )
-shape = SubResource( 42 )
+shape = SubResource( 41 )
 
 [node name="attack_delay" type="Timer" parent="."]
 
@@ -219,7 +215,12 @@ shape = SubResource( 42 )
 
 [node name="claws_collision" type="CollisionShape2D" parent="claws"]
 visible = false
-position = Vector2( -9.11923, 7.768 )
+position = Vector2( -8.75476, 10.4651 )
+shape = SubResource( 42 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.870157, 2.63982 )
 shape = SubResource( 43 )
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]

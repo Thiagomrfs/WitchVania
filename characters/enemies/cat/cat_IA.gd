@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export(bool) var boss = false
+
 const GRAVITY = 100
 const JUMP_POWER = -150
 const FLOOR = Vector2(0, -1)
@@ -21,14 +23,16 @@ onready var attack_delay = get_node("attack_delay")
 
 func death():
 	dead = true
-	$AnimatedSprite.play("death")
-	yield($AnimatedSprite, "animation_finished")
 	$CollisionShape2D.set_deferred("disabled", true)
 	$range/CollisionShape2D.set_deferred("disabled", true)
 	$claws/claws_collision.set_deferred("disabled", true)
+	$AnimatedSprite.play("death")
+	yield($AnimatedSprite, "animation_finished")
 	queue_free()
 
 func _ready():
+	if boss:
+		scale = Vector2(3,3)
 	attack_delay.set_wait_time(2)
 	$AnimatedSprite.play("default")
 

@@ -163,6 +163,7 @@ extents = Vector2( 3.72133, 7.2146 )
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 0.114189, -4.75683 )
+collision_layer = 3
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

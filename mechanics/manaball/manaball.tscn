@@ -37,6 +37,7 @@ radius = 2.39241
 height = 4.46281
 
 [node name="manaball" type="Area2D"]
+collision_layer = 19
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

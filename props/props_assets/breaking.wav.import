@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/breaking.wav-b4203e38b0322535a1013529b1ef5182.sample"
+
+[deps]
+
+source_file="res://props/props_assets/breaking.wav"
+dest_files=[ "res://.import/breaking.wav-b4203e38b0322535a1013529b1ef5182.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
