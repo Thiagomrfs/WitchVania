@@ -125,7 +125,7 @@ func _on_Timer_timeout():
 	timer.stop()
 
 func _on_Timer2_timeout():
-	get_tree().change_scene("res://scenes/Main_menu.tscn")
+	SceneTansition.change_scene_with_transition("res://scenes/Main_menu.tscn")
 	death_timer.stop()
 
 func _on_AnimatedSprite_animation_finished():

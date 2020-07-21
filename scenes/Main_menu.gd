@@ -7,7 +7,7 @@ func _ready():
 		Globals.theme.play()
 
 func _on_TextureButton_pressed():
-	SceneTansition.change_scene_with_transition("res://scenes/fase1.tscn")
+	SceneTansition.change_scene_with_transition("res://scenes/stage_one/stage_one.tscn")
 	
 
 
