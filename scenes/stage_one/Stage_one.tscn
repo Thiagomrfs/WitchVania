@@ -15,6 +15,7 @@
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, -72 )
+on_death_path = "res://scenes/Main_menu.tscn"
 
 [node name="map" type="Node2D" parent="."]
 
@@ -391,6 +392,7 @@ choosed_jump = true
 
 [node name="end_door" parent="map" instance=ExtResource( 6 )]
 position = Vector2( 1448, -416 )
+target_stage = "res://scenes/stage_two/stage_two.tscn"
 
 [node name="enemies" type="Node2D" parent="."]
 

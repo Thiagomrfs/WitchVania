@@ -14,6 +14,7 @@ var is_attack_boosted = false
 
 export(bool) var dark_phase = false 
 export(bool) var boss_fight = false
+export(String, FILE, "*.tscn") var on_death_path
 
 onready var timer = get_node("timers/Timer")
 onready var death_timer = get_node("timers/Timer2")
@@ -49,8 +50,6 @@ func _ready():
 	if dark_phase:
 		get_parent().get_node("map").modulate = Color(0.09, 0.09, 0.09)
 		get_parent().get_node("enemies").modulate = Color(0.09, 0.09, 0.09)
-		get_parent().get_node("props").modulate = Color(0.09, 0.09, 0.09)
-		get_parent().get_node("power_ups").modulate = Color(0.09, 0.09, 0.09)
 		$".".modulate = Color(0.64, 0.64, 0.64)
 		$light_phases_aura.visible = true
 		$light_phases_aura.energy = 5
@@ -62,6 +61,7 @@ func _ready():
 			Globals.theme.stop()
 		if not Globals.boss_theme.playing:
 			Globals.boss_theme.play()
+		get_parent().get_node("map").get_node("tilesets").modulate = Color(0.91, 0.33, 0.33)
 	else:
 		if Globals.boss_theme.playing:
 			Globals.boss_theme.stop()
@@ -125,7 +125,7 @@ func _on_Timer_timeout():
 	timer.stop()
 
 func _on_Timer2_timeout():
-	SceneTansition.change_scene_with_transition("res://scenes/Main_menu.tscn")
+	SceneTansition.change_scene_with_transition(on_death_path)
 	death_timer.stop()
 
 func _on_AnimatedSprite_animation_finished():

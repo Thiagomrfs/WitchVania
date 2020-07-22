@@ -47,3 +47,10 @@ func _on_manaball_body_entered(body):
 	elif "chest" in body.name:
 		body.break_chest()
 	queue_free()
+
+
+
+func _on_manaball_area_entered(area):
+	if "manaball" in area.name:
+		area.queue_free()
+	queue_free()

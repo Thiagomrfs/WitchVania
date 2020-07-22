@@ -17,7 +17,7 @@ var target_position
 var direction
 
 onready var start_position = position
-onready var target = get_parent().get_parent().get_node("player")
+onready var target = get_parent().get_parent().get_parent().get_node("player")
 onready var attack_delay = get_node("attack_delay")
 
 

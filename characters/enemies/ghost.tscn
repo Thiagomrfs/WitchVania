@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://ghost enemy.png" type="Texture" id=1]
 [ext_resource path="res://characters/enemies/ghost.gd" type="Script" id=2]
@@ -58,6 +58,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 9.16524, 9.24378 )
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 192, 128 )
+
 [node name="ghost" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -65,7 +68,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.234417, -0.131061 )
 scale = Vector2( 0.706877, 0.706877 )
 frames = SubResource( 12 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -79,4 +82,11 @@ shape = SubResource( 13 )
 visible = false
 position = Vector2( 0.401513, 0.0626726 )
 shape = SubResource( 13 )
+
+[node name="range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
+visible = false
+shape = SubResource( 14 )
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]

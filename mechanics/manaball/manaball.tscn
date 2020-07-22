@@ -60,5 +60,6 @@ scale = Vector2( 0.0314869, 0.0151058 )
 texture = ExtResource( 3 )
 color = Color( 0.870618, 0.722961, 0.898438, 1 )
 shadow_enabled = true
+[connection signal="area_entered" from="." to="." method="_on_manaball_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_manaball_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
