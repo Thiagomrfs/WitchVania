@@ -67,7 +67,7 @@ func _process(delta):
 				else:
 					jump_motion.y = 0
 	
-				if position.x < target_position.x-1:
+				if position.x < target_position.x-20:
 					jump_motion.x = (target_position.x - position.x) * 3
 				else:
 					$AnimatedSprite.play("default")
@@ -88,7 +88,7 @@ func _process(delta):
 				else:
 					jump_motion.y = 0
 
-				if position.x > target_position.x+1:
+				if position.x > target_position.x+20:
 					jump_motion.x = (position.x - target_position.x) * -3
 					move_and_slide(jump_motion, FLOOR)
 				else:
