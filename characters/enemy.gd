@@ -1,16 +1,18 @@
 extends KinematicBody2D
 
+signal boss_dead
+
 const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
 
 var motion = Vector2()
 var is_dead = false
-var is_boss_dead = false
 onready var attack = get_node("attack")
 onready var attack_delay = get_node("manabal_delay")
 var is_attacking = false
 var jump_power = -250
+var initial_hp
 
 export(int) var direction = 1
 export(int) var speed = 60
@@ -19,7 +21,10 @@ export(bool) var boss = false
 export(int) var hp = 1
 
 func _ready():
+	initial_hp = hp
 	if boss:
+		$health_bar.visible = true
+		$health_bar.update_max_health(hp)
 		scale = Vector2(2, 2)
 	if type == "shooter":
 		attack.set_wait_time(3.5)
@@ -34,11 +39,12 @@ func _ready():
 func death():
 	if hp <= 0:
 		if boss:
-			is_boss_dead = true
+			emit_signal("boss_dead")
 		is_dead = true
 		motion = Vector2(0, 0)
 		$AnimatedSprite.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
+		$health_bar.queue_free()
 
 func shoot_manaball():
 	if is_dead == false:
@@ -52,6 +58,10 @@ func shoot_manaball():
 
 func _process(delta):
 	if is_dead == false:
+		if hp < initial_hp:
+			$health_bar.visible = true
+		if boss:
+			$health_bar.update_health(hp)
 		if type == "default":
 				if direction == -1:
 					$AnimatedSprite.flip_h = true
@@ -78,6 +88,8 @@ func _process(delta):
 							get_slide_collision(slide).collider.death()
 		
 		if type == "shooter":
+			motion.y += GRAVITY
+			motion = move_and_slide(motion, FLOOR)
 			if is_attacking == false:
 				$AnimatedSprite.play("idle")
 			else:

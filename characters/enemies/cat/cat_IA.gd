@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
+signal boss_dead()
+
 export(bool) var boss = false
+export(int) var hp = 1
 
 const GRAVITY = 100
 const JUMP_POWER = -150
@@ -15,6 +18,7 @@ var jump_height = 5
 var jump_width
 var target_position
 var direction
+var full_hp
 
 onready var start_position = position
 onready var target = get_parent().get_parent().get_parent().get_node("player")
@@ -22,21 +26,29 @@ onready var attack_delay = get_node("attack_delay")
 
 
 func death():
-	dead = true
-	$CollisionShape2D.set_deferred("disabled", true)
-	$range/CollisionShape2D.set_deferred("disabled", true)
-	$claws/claws_collision.set_deferred("disabled", true)
-	$AnimatedSprite.play("death")
-	yield($AnimatedSprite, "animation_finished")
-	queue_free()
+	if hp <= 0:
+		dead = true
+		$CollisionShape2D.set_deferred("disabled", true)
+		$range/CollisionShape2D.set_deferred("disabled", true)
+		$claws/claws_collision.set_deferred("disabled", true)
+		$AnimatedSprite.play("death")
+		yield($AnimatedSprite, "animation_finished")
+		queue_free()
+		if boss:
+			emit_signal("boss_dead")
 
 func _ready():
+	full_hp = hp
+	$health_bar.update_max_health(full_hp)
 	if boss:
 		scale = Vector2(3,3)
 	attack_delay.set_wait_time(2)
 	$AnimatedSprite.play("default")
 
 func _process(delta):
+	if hp < full_hp:
+		$health_bar.visible = true
+		$health_bar.update_health(hp)
 	if not dead:
 		for slide in range(get_slide_count()):
 			if "player" in get_slide_collision(slide).collider.name:
@@ -101,9 +113,10 @@ func _on_range_body_entered(body):
 			attack_delay.start()
 
 func _on_range_body_exited(body):
-	if targeting:
-		targeting = false
-		$AnimatedSprite.play("default")
+	if "player" in body.name:
+		if targeting and not dead:
+			targeting = false
+			$AnimatedSprite.play("default")
 
 func _on_attack_delay_timeout():
 	if not dead:

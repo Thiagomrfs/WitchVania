@@ -36,6 +36,6 @@ func _on_hitbox_body_entered(body):
 	if "player" in body.name:
 		body.death()
 
-
 func _on_range_body_entered(body):
-	targeting = true
+	if "player" in body.name:
+		targeting = true

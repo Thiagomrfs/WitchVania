@@ -2,8 +2,8 @@ extends StaticBody2D
 
 func _on_Area2D_body_entered(body):
 	if "player" in body.name:
-		body.jump_power += 100
+		body.jump_power += 150
 
 func _on_Area2D_body_exited(body):
 	if "player" in body.name:
-		body.jump_power -= 100
+		body.jump_power -= 150

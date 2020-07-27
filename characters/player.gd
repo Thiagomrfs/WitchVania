@@ -53,6 +53,7 @@ func _ready():
 		$".".modulate = Color(0.64, 0.64, 0.64)
 		$light_phases_aura.visible = true
 		$light_phases_aura.energy = 5
+		VisualServer.set_default_clear_color(Color(0.01,0.0,0.03,1.0))
 	timer.set_wait_time(0.6)
 	attack_delay.set_wait_time(2)
 	death_timer.set_wait_time(3)

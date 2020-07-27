@@ -68,7 +68,7 @@ script = ExtResource( 2 )
 position = Vector2( 0.234417, -0.131061 )
 scale = Vector2( 0.706877, 0.706877 )
 frames = SubResource( 12 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="hitbox" type="Area2D" parent="."]
@@ -84,9 +84,9 @@ position = Vector2( 0.401513, 0.0626726 )
 shape = SubResource( 13 )
 
 [node name="range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
-visible = false
 shape = SubResource( 14 )
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]

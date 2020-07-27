@@ -17,16 +17,13 @@ _global_script_class_icons={
 
 config/name="Witchvania"
 run/main_scene="res://scenes/Main_menu.tscn"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
 SceneTansition="*res://UI/scene_transition/Scene_tansition.tscn"
 Globals="*res://scenes/globals.tscn"
-
-[display]
-
-window/size/always_on_top=true
 
 [input]
 
@@ -38,4 +35,4 @@ ui_pause={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.0156863, 0.0156863, 0.0470588, 1 )
+environment/default_clear_color=Color( 0.219608, 0.219608, 0.223529, 1 )

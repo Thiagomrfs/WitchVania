@@ -43,6 +43,7 @@ func _on_manaball_body_entered(body):
 	elif "ghost" in body.name:
 		body.death()
 	elif "cat" in body.name:
+		body.hp -= damage
 		body.death()
 	elif "chest" in body.name:
 		body.break_chest()
@@ -53,4 +54,4 @@ func _on_manaball_body_entered(body):
 func _on_manaball_area_entered(area):
 	if "manaball" in area.name:
 		area.queue_free()
-	queue_free()
+		queue_free()
