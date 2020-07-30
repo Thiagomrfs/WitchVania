@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const GRAVITY = 10
-const FLOOR = Vector2(0, -1)
 const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
+const FLOOR = Vector2(0, -1)
 
+var GRAVITY = 10
 var motion = Vector2()
 var velocity = 100
 var jump_power = 250
@@ -11,6 +11,7 @@ var is_attacking = false
 var can_attack = true
 var is_dead = false
 var is_attack_boosted = false
+var hp = 1
 
 export(bool) var dark_phase = false 
 export(bool) var boss_fight = false
@@ -22,6 +23,7 @@ onready var attack_delay = get_node("timers/attack_wait")
 
 
 func death():
+	hp -= 1
 	is_dead = true
 	motion = Vector2(0,0)
 	$sound_fx/death_fx.play()
@@ -58,6 +60,7 @@ func _ready():
 	attack_delay.set_wait_time(2)
 	death_timer.set_wait_time(3)
 	if boss_fight:
+		$health_bar.update_max_health(hp)
 		if Globals.theme.playing: 
 			Globals.theme.stop()
 		if not Globals.boss_theme.playing:
@@ -89,9 +92,14 @@ func _physics_process(delta):
 			motion.x = 0 
 			if is_on_floor() and is_attacking == false:
 				$AnimatedSprite.play("idle")
+			if is_on_ceiling() and is_attacking == false:
+				$AnimatedSprite.play("idle")
 		
 		if Input.is_action_just_pressed("ui_up"):
 			if is_on_floor():
+				motion.y = -jump_power
+				$sound_fx/jump_fx.playing = true
+			if is_on_ceiling() and jump_power < 0:
 				motion.y = -jump_power
 				$sound_fx/jump_fx.playing = true
 		
@@ -118,6 +126,7 @@ func _physics_process(delta):
 					death()
 
 func _process(delta):
+	$health_bar.update_health(hp)
 	if attack_delay.time_left < 2:
 		$GUI/player_GUI.modulate = Color(1, 1, 1, 1 - attack_delay.time_left)
 

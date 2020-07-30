@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 signal boss_dead
 
-const GRAVITY = 10
 const FLOOR = Vector2(0, -1)
 const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
 
+var GRAVITY = 10
 var motion = Vector2()
 var is_dead = false
 onready var attack = get_node("attack")
@@ -104,3 +104,13 @@ func _on_manabal_delay_timeout():
 	shoot_manaball()
 	attack_delay.stop()
 	is_attacking = false
+
+
+func _on_gravity_changer_gravity_changed():
+	scale.y *= -1
+	GRAVITY *= -1
+
+
+func _on_death_range_body_entered(body):
+	if "player" in body.name:
+		body.death()

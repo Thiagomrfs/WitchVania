@@ -28,6 +28,7 @@ tile_data = PoolIntArray( -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0
 
 [node name="TileMap" type="TileMap" parent="map/tiles"]
 light_mask = 16
+position = Vector2( -1, 0 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_bounce = 1.0
