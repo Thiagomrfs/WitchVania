@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tilesets/flags.tres" type="TileSet" id=1]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://props/chest.tscn" type="PackedScene" id=9]
 [ext_resource path="res://props/torch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Stage_change.tscn" type="PackedScene" id=11]
+[ext_resource path="res://props/hall_eyes.tscn" type="PackedScene" id=12]
 
 [node name="stage_three" type="Node2D"]
 script = ExtResource( 7 )
@@ -142,6 +143,17 @@ position = Vector2( 880, 440 )
 
 [node name="torch25" parent="map/props/torchs" instance=ExtResource( 10 )]
 position = Vector2( 816, 440 )
+
+[node name="hall_eyes" type="Node2D" parent="map/props"]
+
+[node name="hall_eyes" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 360, -56 )
+
+[node name="hall_eyes2" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1256, 328 )
+
+[node name="hall_eyes3" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1832, 424 )
 
 [node name="barrier" type="Node2D" parent="map"]
 

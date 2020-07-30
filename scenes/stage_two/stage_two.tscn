@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://props/spikes.tscn" type="PackedScene" id=8]
 [ext_resource path="res://props/torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/enemies/cat/cat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://props/crazy_eyes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://props/hall_eyes.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 
@@ -783,3 +785,34 @@ flip_h = true
 [node name="spikes144" parent="map/props/spikes" instance=ExtResource( 8 )]
 position = Vector2( 2680, 1448 )
 flip_h = true
+
+[node name="hall_eyes" type="Node2D" parent="map/props"]
+
+[node name="hall_eyes" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 264, 88 )
+
+[node name="hall_eyes2" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 584, 392 )
+
+[node name="hall_eyes3" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 680, 584 )
+
+[node name="hall_eyes4" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 568, 952 )
+
+[node name="hall_eyes5" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1408, 1080 )
+
+[node name="hall_eyes6" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 2472, 1208 )
+
+[node name="crazy_eyes" type="Node2D" parent="map/props"]
+
+[node name="crazy_eyes" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 744, 328 )
+
+[node name="crazy_eyes2" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 2024, 1064 )
+
+[node name="crazy_eyes3" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 2536, 936 )

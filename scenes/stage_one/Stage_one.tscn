@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tilesets/flags.tres" type="TileSet" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://props/spikes.tscn" type="PackedScene" id=8]
 [ext_resource path="res://characters/enemy.tscn" type="PackedScene" id=9]
 [ext_resource path="res://props/torch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://props/crazy_eyes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://props/hall_eyes.tscn" type="PackedScene" id=12]
 
 [node name="Stage_one" type="Node2D"]
 
@@ -389,6 +391,52 @@ position = Vector2( 368, -240 )
 [node name="chest" parent="map/props/chest" instance=ExtResource( 5 )]
 position = Vector2( 440, 560 )
 choosed_jump = true
+
+[node name="hal_eyes" type="Node2D" parent="map/props"]
+
+[node name="hall_eyes" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 360, -120 )
+
+[node name="hall_eyes2" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 520, -56 )
+
+[node name="hall_eyes3" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 808, -152 )
+
+[node name="hall_eyes4" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1208, -264 )
+
+[node name="hall_eyes5" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1496, -72 )
+
+[node name="hall_eyes6" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1864, -24 )
+
+[node name="hall_eyes7" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1640, 360 )
+
+[node name="hall_eyes8" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 776, 568 )
+
+[node name="hall_eyes9" parent="map/props/hal_eyes" instance=ExtResource( 12 )]
+position = Vector2( 504, 536 )
+
+[node name="crazy_eyes" type="Node2D" parent="map/props"]
+
+[node name="crazy_eyes" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 232, -72 )
+
+[node name="crazy_eyes2" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 192, -248 )
+
+[node name="crazy_eyes3" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 856, -40 )
+
+[node name="crazy_eyes4" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 2168, -136 )
+
+[node name="crazy_eyes5" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 1360, 248 )
 
 [node name="end_door" parent="map" instance=ExtResource( 6 )]
 position = Vector2( 1448, -416 )

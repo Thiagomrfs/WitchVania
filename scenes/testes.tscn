@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/enemies/cat/cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/enemies/ghost.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mechanics/jump_platform/jump_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=7]
 
@@ -10,6 +10,7 @@
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 194.15, 98.4091 )
+on_death_path = "res://scenes/testes.tscn"
 
 [node name="map" type="Node2D" parent="."]
 light_mask = 3
@@ -44,11 +45,9 @@ position = Vector2( 400.584, 112.003 )
 [node name="enemies" type="Node2D" parent="."]
 modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 
-[node name="cats" type="Node2D" parent="enemies"]
+[node name="ghosts" type="Node2D" parent="enemies"]
 
-[node name="cat" parent="enemies/cats" instance=ExtResource( 3 )]
-position = Vector2( 131.398, -34.1505 )
-boss = true
-hp = 3
+[node name="ghost" parent="enemies/ghosts" instance=ExtResource( 3 )]
+position = Vector2( 83.8007, 99.9728 )
 
 [node name="props" type="Node2D" parent="."]

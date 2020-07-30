@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=2]
@@ -10,11 +10,13 @@
 [ext_resource path="res://mechanics/jump_platform/jump_platform.tscn" type="PackedScene" id=8]
 [ext_resource path="res://props/torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://props/spikes.tscn" type="PackedScene" id=10]
+[ext_resource path="res://props/crazy_eyes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://props/hall_eyes.tscn" type="PackedScene" id=12]
 
 [node name="stage_six" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -16, -8 )
+position = Vector2( 0, -32 )
 on_death_path = "res://scenes/stage_six/stage_six.tscn"
 
 [node name="map" type="Node2D" parent="."]
@@ -207,6 +209,40 @@ position = Vector2( -69, 616 )
 
 [node name="Sprite12" parent="map/props/spikes" instance=ExtResource( 10 )]
 position = Vector2( -69, 616 )
+
+[node name="hall_eyes" type="Node2D" parent="map/props"]
+
+[node name="hall_eyes" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( -200, 72 )
+
+[node name="hall_eyes2" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 136, 472 )
+
+[node name="hall_eyes3" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 568, 440 )
+
+[node name="hall_eyes4" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 856, 232 )
+
+[node name="hall_eyes5" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( -280, 568 )
+
+[node name="hall_eyes6" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( -664, 472 )
+
+[node name="hall_eyes7" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( -824, 152 )
+
+[node name="crazy_eyes" type="Node2D" parent="map/props"]
+
+[node name="crazy_eyes" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 56, 72 )
+
+[node name="crazy_eyes2" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( 568, 296 )
+
+[node name="crazy_eyes3" parent="map/props/crazy_eyes" instance=ExtResource( 11 )]
+position = Vector2( -904, 296 )
 
 [node name="end_door" parent="map" instance=ExtResource( 4 )]
 position = Vector2( 896, 224 )
