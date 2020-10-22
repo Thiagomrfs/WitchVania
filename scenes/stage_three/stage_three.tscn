@@ -50,6 +50,17 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
+[node name="hall_eyes" type="Node2D" parent="map/tilesets"]
+
+[node name="hall_eyes" parent="map/tilesets/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 360, -56 )
+
+[node name="hall_eyes2" parent="map/tilesets/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1256, 328 )
+
+[node name="hall_eyes3" parent="map/tilesets/hall_eyes" instance=ExtResource( 12 )]
+position = Vector2( 1832, 424 )
+
 [node name="props" type="Node2D" parent="map"]
 
 [node name="chests" type="Node2D" parent="map/props"]
@@ -143,17 +154,6 @@ position = Vector2( 880, 440 )
 
 [node name="torch25" parent="map/props/torchs" instance=ExtResource( 10 )]
 position = Vector2( 816, 440 )
-
-[node name="hall_eyes" type="Node2D" parent="map/props"]
-
-[node name="hall_eyes" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
-position = Vector2( 360, -56 )
-
-[node name="hall_eyes2" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
-position = Vector2( 1256, 328 )
-
-[node name="hall_eyes3" parent="map/props/hall_eyes" instance=ExtResource( 12 )]
-position = Vector2( 1832, 424 )
 
 [node name="barrier" type="Node2D" parent="map"]
 

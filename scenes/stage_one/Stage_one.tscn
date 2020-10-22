@@ -16,7 +16,7 @@
 [node name="Stage_one" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, -72 )
+position = Vector2( 32, -43 )
 on_death_path = "res://scenes/Main_menu.tscn"
 
 [node name="map" type="Node2D" parent="."]

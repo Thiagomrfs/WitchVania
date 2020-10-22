@@ -84,5 +84,5 @@ margin_top = 105.0
 margin_right = 299.0
 margin_bottom = 186.0
 texture_normal = ExtResource( 4 )
-[connection signal="pressed" from="Title_screen/HBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/Start" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Title_screen/HBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Title_screen/HBoxContainer/VBoxContainer/CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -41,6 +41,7 @@ animations = [ {
 } ]
 
 [node name="crazy_eyes" type="AnimatedSprite"]
+z_index = -1
 frames = SubResource( 8 )
 script = ExtResource( 3 )
 

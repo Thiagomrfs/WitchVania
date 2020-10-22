@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tilesets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/enemies/ghost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://power_ups/jump_power_up.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mechanics/jump_platform/jump_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tilesets/details.tres" type="TileSet" id=7]
 
@@ -47,7 +47,15 @@ modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 
 [node name="ghosts" type="Node2D" parent="enemies"]
 
-[node name="ghost" parent="enemies/ghosts" instance=ExtResource( 3 )]
-position = Vector2( 83.8007, 99.9728 )
+[node name="power ups" type="Node2D" parent="."]
+
+[node name="jump_powerUp" parent="power ups" instance=ExtResource( 3 )]
+position = Vector2( 135.01, 102.669 )
+
+[node name="jump_powerUp2" parent="power ups" instance=ExtResource( 3 )]
+position = Vector2( 237.165, 106.262 )
+
+[node name="jump_powerUp3" parent="power ups" instance=ExtResource( 3 )]
+position = Vector2( 274.126, 105.749 )
 
 [node name="props" type="Node2D" parent="."]

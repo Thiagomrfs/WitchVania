@@ -68,6 +68,7 @@ animations = [ {
 } ]
 
 [node name="hall_eyes" type="AnimatedSprite"]
+z_index = -1
 frames = SubResource( 15 )
 script = ExtResource( 2 )
 

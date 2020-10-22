@@ -29,6 +29,8 @@ func move_enemy(delta):
 						$AnimatedSprite.flip_h = false
 
 func death():
+	$hitbox.queue_free()
+	$shape.queue_free()
 	$AnimationPlayer.play("death")
 	yield($AnimationPlayer, "animation_finished")
 	$".".queue_free()

@@ -22,9 +22,9 @@ export(int) var hp = 1
 
 func _ready():
 	initial_hp = hp
+	$health_bar.update_max_health(hp)
 	if boss:
 		$health_bar.visible = true
-		$health_bar.update_max_health(hp)
 		scale = Vector2(2, 2)
 	if type == "shooter":
 		attack.set_wait_time(3.5)
@@ -44,6 +44,7 @@ func death():
 		motion = Vector2(0, 0)
 		$AnimatedSprite.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
+		$death_range.queue_free()
 		$health_bar.queue_free()
 
 func shoot_manaball():
@@ -56,12 +57,11 @@ func shoot_manaball():
 		get_parent().add_child(manaball)
 		manaball.position = $Position2D.global_position
 
-func _process(delta):
+func _process(_delta):
 	if is_dead == false:
+		$health_bar.update_health(hp)
 		if hp < initial_hp:
 			$health_bar.visible = true
-		if boss:
-			$health_bar.update_health(hp)
 		if type == "default":
 				if direction == -1:
 					$AnimatedSprite.flip_h = true

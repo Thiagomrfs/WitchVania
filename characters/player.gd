@@ -3,7 +3,7 @@ extends KinematicBody2D
 const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
 const FLOOR = Vector2(0, -1)
 
-var GRAVITY = 10
+var gravity = 10
 var motion = Vector2()
 var velocity = 100
 var jump_power = 250
@@ -12,6 +12,8 @@ var can_attack = true
 var is_dead = false
 var is_attack_boosted = false
 var hp = 1
+var jumps = 1
+var remaining_jumps = jumps
 
 export(bool) var dark_phase = false 
 export(bool) var boss_fight = false
@@ -72,7 +74,7 @@ func _ready():
 		if not Globals.theme.playing:
 			Globals.theme.play()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_dead == false:
 		if Input.is_action_pressed("ui_right"):
 			if is_attacking == false:
@@ -99,6 +101,12 @@ func _physics_process(delta):
 			if is_on_floor():
 				motion.y = -jump_power
 				$sound_fx/jump_fx.playing = true
+				remaining_jumps -= 1
+			elif remaining_jumps > 0:
+				motion.y = -jump_power
+				$sound_fx/jump_fx.playing = true
+				remaining_jumps -= 1
+		
 			if is_on_ceiling() and jump_power < 0:
 				motion.y = -jump_power
 				$sound_fx/jump_fx.playing = true
@@ -113,7 +121,7 @@ func _physics_process(delta):
 			attack_delay.start()
 			timer.start()
 
-		motion.y += GRAVITY
+		motion.y += gravity
 		motion = move_and_slide(motion, FLOOR)
 
 		if get_slide_count() > 0:
@@ -125,10 +133,15 @@ func _physics_process(delta):
 				elif "cat" in get_slide_collision(slide).collider.name:
 					death()
 
-func _process(delta):
+func _process(_delta):
 	$health_bar.update_health(hp)
 	if attack_delay.time_left < 2:
 		$GUI/player_GUI.modulate = Color(1, 1, 1, 1 - attack_delay.time_left)
+	
+	if gravity > 0 and is_on_floor():
+		remaining_jumps = jumps
+	elif gravity < 0 and is_on_ceiling():
+		remaining_jumps = jumps
 
 func _on_Timer_timeout():
 	shoot_manaball()
