@@ -23,7 +23,7 @@ export(String, FILE, "*.tscn") var on_death_path
 onready var timer = get_node("timers/Timer")
 onready var death_timer = get_node("timers/Timer2")
 onready var attack_delay = get_node("timers/attack_wait")
-
+onready var attack_indicator = get_node("GUI/player_GUI/icons_holder/items/attack_delay/attack/attack_indicator")
 
 func death():
 	hp -= 1
@@ -52,6 +52,7 @@ func shoot_manaball():
 		is_attacking = false
 
 func _ready():
+	$GUI/player_GUI.visible = true
 	if dark_phase:
 		get_parent().get_node("map").modulate = Color(0.09, 0.09, 0.09)
 		get_parent().get_node("enemies").modulate = Color(0.09, 0.09, 0.09)
@@ -118,7 +119,7 @@ func _physics_process(_delta):
 			can_attack = false
 			is_attacking = true
 			$AnimatedSprite.play("manaball")
-			$GUI/player_GUI.modulate = Color(1, 1, 1, 0.08)
+			attack_indicator.modulate = Color(1, 1, 1, 0.08)
 			attack_delay.start()
 			timer.start()
 
@@ -137,7 +138,7 @@ func _physics_process(_delta):
 func _process(_delta):
 	$health_bar.update_health(hp)
 	if attack_delay.time_left < 2:
-		$GUI/player_GUI.modulate = Color(1, 1, 1, 1 - attack_delay.time_left)
+		attack_indicator.modulate = Color(1, 1, 1, 1 - attack_delay.time_left)
 	
 	if gravity > 0 and is_on_floor():
 		remaining_jumps = jumps
