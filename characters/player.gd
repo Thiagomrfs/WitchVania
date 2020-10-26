@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const MANABALL = preload("res://mechanics/manaball/manaball.tscn")
+const POWER_UP_SCREEN = preload("res://UI/power_up_screen/power_up_screen.tscn")
 const FLOOR = Vector2(0, -1)
 
 var gravity = 10
@@ -58,7 +59,7 @@ func _ready():
 		$light_phases_aura.visible = true
 		$light_phases_aura.energy = 5
 		VisualServer.set_default_clear_color(Color(0.01,0.0,0.03,1.0))
-	timer.set_wait_time(0.6)
+	timer.set_wait_time(0.4)
 	attack_delay.set_wait_time(2)
 	death_timer.set_wait_time(3)
 	if boss_fight:
@@ -142,6 +143,11 @@ func _process(_delta):
 		remaining_jumps = jumps
 	elif gravity < 0 and is_on_ceiling():
 		remaining_jumps = jumps
+
+func spawn_power_up_screen(type):
+	var screen = POWER_UP_SCREEN.instance()
+	$GUI.add_child(screen)
+	screen.fade_in(type)
 
 func _on_Timer_timeout():
 	shoot_manaball()

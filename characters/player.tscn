@@ -146,7 +146,7 @@ animations = [ {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": false,
 "name": "manaball",
-"speed": 10.0
+"speed": 16.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": false,
@@ -172,6 +172,8 @@ light_mask = 2
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 32 )
 animation = "manaball"
+frame = 8
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

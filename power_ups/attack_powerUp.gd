@@ -7,4 +7,5 @@ func _ready():
 func _on_attack_powerUp_body_entered(body):
 	if "player" in body.name:
 		body.is_attack_boosted = true
+		body.spawn_power_up_screen("attack")
 		$".".queue_free()

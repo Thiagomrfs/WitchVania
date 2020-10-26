@@ -25,6 +25,10 @@ config/icon="res://icon.png"
 SceneTansition="*res://UI/scene_transition/Scene_tansition.tscn"
 Globals="*res://scenes/globals.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_pause={

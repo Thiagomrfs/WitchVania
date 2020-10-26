@@ -7,4 +7,5 @@ func _ready():
 func _on_speed_powerUp_body_entered(body):
 	if "player" in body.name:
 		body.velocity += 50
+		body.spawn_power_up_screen("speed")
 		$".".queue_free()

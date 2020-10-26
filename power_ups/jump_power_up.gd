@@ -7,4 +7,5 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if "player" in body.name:
 		body.jumps += 1
+		body.spawn_power_up_screen("jump")
 		$".".queue_free()
