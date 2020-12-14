@@ -61,6 +61,4 @@ position = Vector2( 328.085, 101.366 )
 position = Vector2( 306.419, 100.592 )
 
 [node name="props" type="Node2D" parent="."]
-[connection signal="jump_powered" from="power ups/jump_powerUp" to="player" method="_on_jump_powerUp_jump_powered"]
 [connection signal="attack_powered" from="power ups/attack_powerUp" to="player" method="_on_attack_powerUp_attack_powered"]
-[connection signal="speed_powered" from="power ups/speed_powerUp" to="player" method="_on_speed_powerUp_speed_powered"]
